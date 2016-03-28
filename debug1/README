@@ -1,0 +1,50 @@
+/*
+ * Filename: README
+ * Author: Diana Ho
+ * UserID: cs30xje
+ * Date: January 27, 2015
+ */
+
+
+Errors
+--------------------
+1)  Error:  location counter not on word boundary
+    File:   reverse.s
+    Line#:  29
+    Fix:    corrected save instruction to "save %sp, -(92+4)&-8, %sp"
+
+2)  Error:  missing ".section ".text" "
+    File:   reverse.s
+    Line#:  13
+    Fix:    added ".section ".text" "
+
+3)  Error:  ld returned 1 exit status
+    File:   reverse.s
+    Line#:  73
+    Fix:    changed mov to set in "set palStr, %o0"
+
+4)  Error:  Bus error (core dumped)
+    File:   swapChars.s
+    Line#:  45
+    Fix:    missing "nop" after branching
+
+5)  Error:  Program didn't work correctly when several
+            strings were entered into the argument
+    File:   main.c
+    Line#:  42
+    Fix:    changed the argument to i in "argv[i]"
+
+6)  Error:  Bus error (core dumped)
+    File:	reverse.s
+    Line#:	59
+    Fix:	decrement correctly "sub %l2, 1, %l2"
+
+7)	Error:	Assembly file missing save instruction
+	File:	findEnd.s
+	Line#:	25
+	Fix:	added "save	%sp, -96, %sp"
+	
+8)	Error:	Using the wrong load instruction
+	File:	findEnd.s
+	Line#:	31, 42
+	Fix:	changed from ld to "ldub"

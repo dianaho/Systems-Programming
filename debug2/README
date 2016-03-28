@@ -1,0 +1,58 @@
+/*
+ * Filename: README
+ * Author: Diana Ho
+ * UserID: cs30xje
+ * Date: March 7, 2015
+ */
+
+
+Errors
+--------------------
+1)  Error:  Undefined symbol: numOfChars 
+    File:   main.c   
+    Line#:  60
+    Fix:    The variable numOfChars was declared in the file count.c
+            To use this variable in main, I had to declare numOfChars
+            as an extern variable before the main function.
+
+            
+2)  Error:  Function returns pointer to automatic 
+    File:   main.c
+    Line#:  35
+    Fix:    The function in main exits if argc does not equal the required
+            number of arguments. However, count.c wanted to return a pointer
+            to the local array, which causes this error. To fix this, I made
+            the array in count.c static instead of local:
+                static int asctb[ASCII] = {0};
+
+
+3)  Error:  Implicit function declaration: strlen  
+    File:   count.c
+    Line#:  28
+    Fix:    The loop was calling the strlen function defined in string.h
+            but failed to include the library, which I just included:
+                #include <string.h>
+
+     
+4)  Error:  Running the program with any arbitrary string will print out
+            "appeared 0 times" without printing out the character that
+            appears.
+    File:   main.c
+    Line#:  53
+    Fix:    The "if" statement had two print statements following its
+            condition but failed to enclose these two in brackets, so
+            only one statement would print if count[j] existed else the
+            second print statement would print. To fix this, I included
+            the {} brackets before and after the two statements and
+            the numOfChars++ line.
+
+
+5)  Error:  Running the program with a string will print out way too many
+            lines, having the wrong output overall.
+    File:   main.c
+    Line#:  52
+    Fix:    The static array in count.c has size of ASCII. Using the
+            condition sizeof(count) will always return a size of 4
+            since count is a pointer and the size of a pointer is 4.
+            To fix, I changed the condition to be a max value of ASCII.
+                for (j=0; j < ASCII; j++)

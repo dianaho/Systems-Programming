@@ -1,0 +1,85 @@
+/*
+ * Filename: README
+ * Author: Diana Ho
+ * UserID: cs30xje
+ * Date: February 24, 2015
+ */
+
+Description
+-------------------
+    This program finds various anagrams of a word read from stdin. It
+prompts the user for input and directs the output to stdout. The program
+continues to prompt for inputs until the user types the control sequence
+to indicate no more input.
+
+
+How to Compile
+-------------------
+    We can compile this program using the source files given in the right
+directory of PA3. This includes the Makefile to which we type "make".
+
+
+How to Run
+-------------------
+    We can run this program by running it's executable file, anagrams,
+with one input which is the file we want to test from. For example:
+
+        ./anagrams /usr/dict/words
+
+
+Normal Output
+-------------------
+    Normal output is printed to stdout.  An example of a normal output is:
+	
+	[cs30xje@ieng9]:pa3: 530$ ./anagrams four_anagrams.txt
+    Enter a word to search for anagrams [^D to exit]: post
+
+    Anagram(s) are: spot stop tops
+
+    Enter a word to search for anagrams [^D to exit]: PoSt
+
+    Anagram(s) are: post spot stop tops
+
+    Enter a word to search for anagrams [^D to exit]: dog
+
+    No anagrams found.
+
+    Enter a word to search for anagrams [^D to exit]: ^D
+
+
+Abnormal Output
+-------------------
+    Abnormal output is printed to stderr. It can happen multiple ways:
+
+    1.  No arguments
+
+    [cs30xyz@ieng9]:pa3$ ./anagrams
+
+    Usage: ./anagrams dictionary_file
+    
+
+    2.  Error opening the file
+
+    [cs30xyz@ieng9]:pa3$ ./anagrams abc
+    makeAnagramTable failed: No such file or directory
+
+    Usage: ./anagrams dictionary_file
+    
+    
+    3.  Not enough memory error
+
+    [cs30xyz@ieng9]:pa3$ ./anagrams /usr/dict/words
+    makeAnagramTable failed: Not enough space
+
+    Usage: ./anagrams dictionary_file
+
+
+How to Test
+-------------------
+    This program was tested using unit testing files which tested
+anagramCompare.c, makeAnagramTable.c, charCompare.c, findAnagrams.c,
+and sortedMemberCompare.c. I tested my solution using all three files
+given to us to test. I also compared my solution output to the
+public driver's using the same inputs, then using the bash command "diff".
+I also tested edge cases, using the same word with capitals and variations
+of lower cases.
